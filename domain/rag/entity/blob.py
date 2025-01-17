@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, model_validator
 from typing import Any, Optional, Union
@@ -6,6 +7,7 @@ from collections.abc import Mapping, Generator, Iterable
 from io import BufferedReader, BytesIO
 
 import contextlib
+import mimetypes
 
 
 class Blob(BaseModel):
@@ -36,3 +38,11 @@ class Blob(BaseModel):
                 yield f
         else:
             raise NotImplementedError(f"Unable to convert blob {self}")
+
+    @classmethod
+    def from_path(cls, path: Union[str, PurePath], *, encoding: str = "utf-8", mime_type: Optional[str] = None, guess_type: bool = True) -> Blob:
+        if mime_type is None and guess_type:
+            _mimetype = mimetypes.guess_type(path)[0]
+        else:
+            _mimetype = mime_type
+        return cls(data=None, mime_type=_mimetype, encoding=encoding, path=path)

@@ -19,8 +19,6 @@ class PdfExtractor(extractor_base.BaseExtractor):
         text_list = []
         for document in documents:
             text_list.append(document.page_content)
-
-        text = "\n\n".join(text_list)
         return documents
 
     def load(self) -> Iterator[document.Document]:

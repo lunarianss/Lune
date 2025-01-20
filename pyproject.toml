@@ -22,9 +22,14 @@ grpcio-tools = "^1.69.0"
 
 [tool.poetry.group."tool.poetry.group.validation".dependencies]
 pydantic = "^2.10.5"
+pydantic-settings = "^2.7.1"
 
 
 [tool.poetry.group."tool.poetry.group.extractor".dependencies]
 pypdfium2 = "^4.30.1"
 unstructured-client = "^0.29.0"
+
+
+[tool.poetry.group."tool.poetry.group.storage".dependencies]
+minio = "^7.2.15"
 

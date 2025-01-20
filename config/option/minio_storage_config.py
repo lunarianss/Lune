@@ -8,7 +8,7 @@ class MinioStorageConfig(BaseSettings):
     MINIO_ENDPOINT: Optional[str] = Field(
         description="url of the minio endpoint", default=None)
 
-    MINIO_BUCKET_NAME = Optional[str] = Field(
+    MINIO_BUCKET_NAME: Optional[str] = Field(
         description="bucket of the minio", default=None)
 
     MINIO_ACCESS_KEY: Optional[str] = Field(

@@ -2,7 +2,7 @@ from domain.rag.storage.interface.base import BaseStorage
 from config.option import minio_storage_config
 from minio import Minio
 from collections.abc import Generator
-
+import config
 import logging
 
 logger = logging.getLogger(__name__)
@@ -11,10 +11,10 @@ logger = logging.getLogger(__name__)
 class MinioStorage(BaseStorage):
     def __init__(self):
         super().__init__()
-        self.bucket_name = minio_storage_config.MinioStorageConfig.MINIO_BUCKET_NAME
+        self.bucket_name = config.lune_config.MINIO_BUCKET_NAME
 
-        self.client = Minio(access_key=minio_storage_config.MinioStorageConfig.MINIO_ACCESS_KEY,
-                            secret_key=minio_storage_config.MinioStorageConfig.MINIO_SECRET_KEY, endpoint=minio_storage_config.MinioStorageConfig.MINIO_ENDPOINT, secure=minio_storage_config.MinioStorageConfig.MINIO_USE_SSL)
+        self.client = Minio(access_key=config.lune_config.MINIO_ACCESS_KEY,
+                            secret_key=config.lune_config.MINIO_SECRET_KEY, endpoint=config.lune_config.MINIO_ENDPOINT, secure=config.lune_config.MINIO_USE_SSL)
 
         if not self.client.bucket_exists(
                 self.bucket_name):

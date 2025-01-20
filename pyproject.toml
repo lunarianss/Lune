@@ -33,3 +33,11 @@ unstructured-client = "^0.29.0"
 [tool.poetry.group."tool.poetry.group.storage".dependencies]
 minio = "^7.2.15"
 
+
+[tool.poetry.group."tool.poetry.group.math".dependencies]
+pandas = "^2.2.3"
+
+
+[tool.poetry.group."tool.poetry.group.encode_decode".dependencies]
+chardet = "^5.2.0"
+

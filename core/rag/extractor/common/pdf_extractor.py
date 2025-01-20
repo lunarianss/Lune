@@ -8,7 +8,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
 class PdfExtractor(extractor_base.BaseExtractor):
     def __init__(self, file_path: str):
         self._file_path = file_path

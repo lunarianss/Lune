@@ -16,3 +16,4 @@ debug.log
 .vscode/ 
 debug.error.log
 .DS_Store
+.env

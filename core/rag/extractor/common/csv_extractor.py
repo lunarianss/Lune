@@ -1,10 +1,12 @@
-import csv
 import logging
-import pandas as pd
-from domain.rag.entity import document, blob
 from typing import Optional
+
+from domain.rag.entity import document, blob
 from core.rag.extractor.interface import extractor_base
 from core.rag.util.chardet import detect_file_encodings
+
+import pandas as pd
+
 
 logger = logging.getLogger(__name__)
 

@@ -9,9 +9,14 @@ from core.rag.extractor.unstructured.text_extractor import UnstructuredTextExtra
 from core.rag.extractor.unstructured.msg_extractor import UnstructuredMsgExtractor
 from core.rag.extractor.unstructured.eml_extractor import UnstructuredEmlExtractor
 from core.rag.extractor.unstructured.csv_extractor import UnstructuredCsvExtractor
+from core.rag.extractor.unstructured.excel_extractor import UnstructuredExcelExtractor
 from core.rag.extractor.common.csv_extractor import CSVExtractor
+from core.rag.extractor.common.excel_extractor import ExcelExtractor
+from core.rag.extractor.common.markdown_extractor import MarkdownExtractor
+# from core.rag.extractor.common.html_extractor import HtmlExtractor
+from core.rag.extractor.unstructured.html_extractor import UnstructuredHTMLExtractor
 import logging
-
+import pandas as pd
 logger = logging.getLogger(__name__)
 
 
@@ -23,8 +28,8 @@ if __name__ == "__main__":
         force=True,
     )
 
-    a = CSVExtractor(
-        file_path="/Users/max/unstructured-api/sample-docs/stanley-cups.csv", autodetect_encoding=True).extract()
+    a = UnstructuredMDExtractor(
+        file_path="/Users/max/unstructured-api/sample-docs/README.md", api_key="", api_url="localhost:8000").extract()
 
     for doc in a:
         logger.info("=======")

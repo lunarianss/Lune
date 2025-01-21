@@ -1,4 +1,4 @@
-from domain.rag.storage.interface.base import BaseStorage
+from infrastructure.storage.interface.base import BaseStorage
 from config.option import minio_storage_config
 from minio import Minio
 from collections.abc import Generator

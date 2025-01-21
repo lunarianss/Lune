@@ -41,3 +41,20 @@ pandas = "^2.2.3"
 [tool.poetry.group."tool.poetry.group.encode_decode".dependencies]
 chardet = "^5.2.0"
 
+
+[tool.poetry.group."tool.poetry.group.excel".dependencies]
+openpyxl = "^3.1.5"
+xlrd = "^2.0.1"
+
+
+[tool.poetry.group."tool.poetry.group.html".dependencies]
+bs4 = "^0.0.2"
+
+
+[tool.poetry.group."tool.poetry.group.docx".dependencies]
+docx = "^0.2.4"
+
+
+[tool.poetry.group."tool.poetry.group.orm".dependencies]
+sqlalchemy = "^2.0.37"
+

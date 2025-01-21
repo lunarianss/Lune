@@ -1,12 +1,14 @@
-from core.rag.extractor.interface import extractor_base
-from domain.rag.entity import document, blob
+import logging
 from collections.abc import Iterator
 
+from core.rag.extractor.interface import extractor_base
+from domain.rag.entity import document, blob
+
 import pypdfium2
-import logging
 
 
 logger = logging.getLogger(__name__)
+
 
 class PdfExtractor(extractor_base.BaseExtractor):
     def __init__(self, file_path: str):

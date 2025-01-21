@@ -1,5 +1,5 @@
-from domain.rag.storage.interface.base import BaseStorage
-from domain.rag.storage.entity.storage_type import StorageType
+from infrastructure.storage.interface.base import BaseStorage
+from infrastructure.storage.entity.storage_type import StorageType
 from collections.abc import Generator
 from typing import Union
 
@@ -58,7 +58,7 @@ class Storage:
     def get_storage_factory(storage_type: str) -> type[BaseStorage]:
         match storage_type:
             case StorageType.MINIO:
-                from domain.rag.storage.impl.minio import MinioStorage
+                from infrastructure.storage.impl.minio import MinioStorage
                 return MinioStorage
 
 

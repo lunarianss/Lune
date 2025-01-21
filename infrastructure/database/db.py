@@ -25,3 +25,7 @@ def init_app():
                                              autoflush=False,
                                              bind=engine))
     logger.info("mysql is ready!")
+
+
+def get_session():
+    return db_session

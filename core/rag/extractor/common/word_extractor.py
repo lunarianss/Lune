@@ -16,7 +16,7 @@ from docx import Document as DocxDocument
 from core.rag.extractor.interface import extractor_base
 from domain.rag.entity import document
 from infrastructure.storage.storage import storage
-from infrastructure import db_session
+from infrastructure.database.db import get_session
 from domain.rag.models.enums import CreatedByRole
 from domain.rag.models.model import UploadFile
 from config import lune_config
@@ -117,13 +117,14 @@ class WordExtractor(extractor_base.BaseExtractor):
                     created_by=self.user_id,
                     created_by_role=CreatedByRole.ACCOUNT,
                     created_at=datetime.datetime.now(
-                        datetime.timezone.utc).replace(tzinfo=None),
-                    used=True,
+                        datetime.timezone.utc).replace(tzinfo=None).timestamp(),
+                    used=[1],
                     used_by=self.user_id,
                     used_at=datetime.datetime.now(
-                        datetime.timezone.utc).replace(tzinfo=None),
+                        datetime.timezone.utc).replace(tzinfo=None).timestamp(),
                 )
 
+                db_session = get_session()
                 db_session.add(upload_file)
                 db_session.commit()
                 image_map[rel.target_part] = (

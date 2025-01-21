@@ -4,6 +4,7 @@ from minio import Minio
 from collections.abc import Generator
 import config
 import logging
+import io
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +25,8 @@ class MinioStorage(BaseStorage):
         logger.info("minio is ready!")
 
     def save(self, filename, data):
-        self.client.put_object(self.bucket_name, filename, data)
+        self.client.put_object(
+            self.bucket_name, filename, io.BytesIO(data), length=len(data))
 
     def download(self, filename, target_filepath):
         self.client.fget_object(self.bucket_name, filename, target_filepath)

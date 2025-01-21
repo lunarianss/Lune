@@ -1,5 +1,5 @@
 from concurrent import futures
-from . import app_factory
+import app_factory
 import grpc
 import v1.grpc.extractor_pb2 as extractor_pb2
 import v1.grpc.extractor_pb2_grpc as extractor_pb2_grpc
@@ -17,7 +17,7 @@ class Greeter(extractor_pb2_grpc.GreeterServicer):
 
 
 def serve():
-    port = "50051"
+    port = "30001"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     extractor_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
     server.add_insecure_port("[::]:" + port)

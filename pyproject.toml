@@ -57,4 +57,5 @@ docx = "^0.2.4"
 
 [tool.poetry.group."tool.poetry.group.orm".dependencies]
 sqlalchemy = "^2.0.37"
+pymysql = "^1.1.1"
 

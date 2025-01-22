@@ -1,10 +1,8 @@
-import v1.grpc.extractor_pb2_grpc as extractor_pb2_grpc
-import v1.grpc.extractor_pb2 as extractor_pb2
-import grpc
+
 import app_factory
+
 from core.rag.extractor.unstructured.ppt_extractor import UnstructuredPPTExtractor
 from core.rag.extractor.unstructured.pptx_extractor import UnstructuredPPTXExtractor
-from core.rag.extractor.common.pdf_extractor import PdfExtractor
 from core.rag.extractor.unstructured.xml_extractor import UnstructuredXMLExtractor
 from core.rag.extractor.unstructured.md_extractor import UnstructuredMDExtractor
 from core.rag.extractor.unstructured.doc_extractor import UnstructuredDocExtractor
@@ -14,12 +12,17 @@ from core.rag.extractor.unstructured.msg_extractor import UnstructuredMsgExtract
 from core.rag.extractor.unstructured.eml_extractor import UnstructuredEmlExtractor
 from core.rag.extractor.unstructured.csv_extractor import UnstructuredCsvExtractor
 from core.rag.extractor.unstructured.excel_extractor import UnstructuredExcelExtractor
+from core.rag.extractor.unstructured.html_extractor import UnstructuredHTMLExtractor
+
+from core.rag.extractor.common.pdf_extractor import PdfExtractor
 from core.rag.extractor.common.csv_extractor import CSVExtractor
 from core.rag.extractor.common.excel_extractor import ExcelExtractor
 from core.rag.extractor.common.markdown_extractor import MarkdownExtractor
-# from core.rag.extractor.common.html_extractor import HtmlExtractor
-from core.rag.extractor.unstructured.html_extractor import UnstructuredHTMLExtractor
+from core.rag.extractor.common.html_extractor import HtmlExtractor
 from core.rag.extractor.common.word_extractor import WordExtractor
+
+
+from domain.rag.entity.extract_setting import ExtractSetting
 import logging
 import pandas as pd
 logger = logging.getLogger(__name__)
@@ -46,3 +49,5 @@ if __name__ == "__main__":
     for doc in a:
         logger.info("=======")
         logger.info(doc)
+
+    ExtractSetting(datasource_type="133", upload_info=None)

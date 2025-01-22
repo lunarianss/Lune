@@ -1,8 +1,12 @@
-from concurrent import futures
 import app_factory
 import grpc
-import v1.grpc.extractor_pb2 as extractor_pb2
-import v1.grpc.extractor_pb2_grpc as extractor_pb2_grpc
+import logging
+from v1.grpc.service.service import ExtractorService
+import v1.grpc.extractor.extractor_pb2_grpc as extractor_pb2_grpc
+from concurrent import futures
+
+
+logger = logging.getLogger(__name__)
 
 
 def create_app():
@@ -11,15 +15,11 @@ def create_app():
     app_factory.init_database()
 
 
-class Greeter(extractor_pb2_grpc.GreeterServicer):
-    def SayHello(self, request, context):
-        return extractor_pb2.HelloReply(message="Hello, %s!" % request.name)
-
-
 def serve():
     port = "30001"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    extractor_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+    extractor_pb2_grpc.add_ExtractorServicer_to_server(
+        ExtractorService(), server)
     server.add_insecure_port("[::]:" + port)
     server.start()
     print("Server started, listening on " + port)

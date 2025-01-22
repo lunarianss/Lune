@@ -22,7 +22,7 @@ def serve():
         ExtractorService(), server)
     server.add_insecure_port("[::]:" + port)
     server.start()
-    print("Server started, listening on " + port)
+    logger.info("Server started, listening on " + port)
     server.wait_for_termination()
 
 

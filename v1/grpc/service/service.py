@@ -10,8 +10,10 @@ logger = logging.getLogger(__name__)
 
 class ExtractorService(extractor_pb2_grpc.ExtractorServicer):
     def extract(self, request: ExtractorRequest, context):
+        logger.info(
+            f"[tenant-{request.upload_info.tenant_id}] [file-{request.upload_info.key}] entry the process of extract")
         try:
-            setting = ExtractSetting(upload_info=request.upload_info,
+            setting = ExtractSetting(upload_info={"key": request.upload_info.key, "tenant_id": request.upload_info.tenant_id, "created_by": request.upload_info.created_by},
                                      datasource_type=request.datasource_type,
                                      document_model=request.document_model)
             docs = ExtractProcessor.extract(
